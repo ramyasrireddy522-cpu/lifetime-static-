@@ -11,10 +11,8 @@ img{display:block;max-width:100%}
 .navy{background:var(--navy)}.gold{background:linear-gradient(#f2b43a,#d98c0e)}.green{background:#1f8a4c}
 
 /* logo */
-.logo{font-weight:900;line-height:.9;letter-spacing:-3px;font-size:96px}
-.logo .l1{color:var(--navy)}
-.logo .l2{background:linear-gradient(#f6c344,#c8820d);-webkit-background-clip:text;background-clip:text;color:transparent}
-.logo small{display:block;font-size:19px;letter-spacing:3px;color:var(--navy);margin-top:10px;font-weight:700}
+   .logo{flex-shrink:0}
+   .logo img{width:380px;max-width:100%;height:auto;display:block;mix-blend-mode:multiply}
 
 /* hero */
 .hero{position:relative;padding:34px 40px 24px 60px;min-height:350px}
