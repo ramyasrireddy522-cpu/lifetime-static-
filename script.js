@@ -29,17 +29,16 @@ $(function () {
     $.ajax({
       url: 'https://api.web3forms.com/submit',
       method: 'POST',
-      contentType: 'application/json',
-      accepts: { json: 'application/json' },
-      data: JSON.stringify({
-        access_key: '21863e89-d2ea-4a81-a14f-06060f81eb76',
-        subject: 'New LifeTime Waitlist Signup',
-        from_name: 'LifeTime Website',
-        name: name,
-        mobile: mobile,
-        interest: interest,
-        city: city
-      }),
+       dataType: 'json',
+  data: {
+    access_key: 'YOUR_KEY',
+    subject: 'New LifeTime Waitlist Signup',
+    from_name: 'LifeTime Website',
+    name: name,
+    mobile: mobile,
+    interest: interest,
+    city: city
+  },
       success: function (response) {
         if (response.success) {
           $msg.attr('class', 'msg ok')
