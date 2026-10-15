@@ -26,10 +26,37 @@ $(function () {
       return;
     }
 
-    // TODO: send { name, mobile, interest, city } to your backend here
-    $msg.attr('class', 'msg ok').text('Thanks ' + name + '! You are on the waitlist.').slideDown(150);
-    $('.f input').val('');
-    $('#interest').val('');
+    $.ajax({
+      url: 'https://api.web3forms.com/submit',
+      method: 'POST',
+      contentType: 'application/json',
+      accepts: { json: 'application/json' },
+      data: JSON.stringify({
+        access_key: '21863e89-d2ea-4a81-a14f-06060f81eb76',
+        subject: 'New LifeTime Waitlist Signup',
+        from_name: 'LifeTime Website',
+        name: name,
+        mobile: mobile,
+        interest: interest,
+        city: city
+      }),
+      success: function (response) {
+        if (response.success) {
+          $msg.attr('class', 'msg ok')
+            .text('Thank you! You are on the waitlist.').slideDown(150);
+          $('.f input').val('');
+          $('#interest').val('');
+        } else {
+          $msg.attr('class', 'msg err')
+            .text(response.message || 'Something went wrong. Please try again.').slideDown(150);
+        }
+      },
+      error: function (xhr) {
+        var message = (xhr.responseJSON && xhr.responseJSON.message) ||
+          'Something went wrong. Please try again.';
+        $msg.attr('class', 'msg err').text(message).slideDown(150);
+      }
+    });
   });
 
   // Enter key submits the form
@@ -38,5 +65,7 @@ $(function () {
   });
 
   // Keep placeholder links from jumping to the top
-  $('a[href="#"]').on('click', function (e) { e.preventDefault(); });
+  $('a[href="#"]').on('click', function (e) {
+    e.preventDefault();
+  });
 });
