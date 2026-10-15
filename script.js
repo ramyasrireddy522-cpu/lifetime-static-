@@ -31,7 +31,7 @@ $(function () {
       method: 'POST',
        dataType: 'json',
   data: {
-    access_key: 'YOUR_KEY',
+    access_key: '21863e89-d2ea-4a81-a14f-06060f81eb76',
     subject: 'New LifeTime Waitlist Signup',
     from_name: 'LifeTime Website',
     name: name,
